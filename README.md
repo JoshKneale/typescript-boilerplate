@@ -20,31 +20,31 @@ yarn workspace @example/example start:dev
 ```
 
 ## TODO's
-[x] Add Cassandra database connect logic into the common package
-[x] Add MSSQL database connect logic into the common package
-[x] Add Redis Cluster database connect logic into the common package
-[x] Add a generic HTTP/S communication layer between services in the common package
-[ ] Add NodeJS best practice kill process handling
-[ ] Add GraphQL to the API service
-[ ] Generate swagger docs for the API service
-[ ] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
-[ ] Add Postgres database connect logic into the common package
-[ ] Add MySql database connect logic into the common package
-[ ] Add DynamoDB database connect logic into the common package
-[ ] Add MongoDB database connect logic into the common package
-[ ] Add Elasticsearch database connect logic into the common package
-[ ] Add Neo4j database connect logic into the common package
-[ ] Add GRPC as a communication layer between services
-[ ] Add websockets (socket.io) as a communication layer between services
-[ ] Add websockets (socket.io) into the API service
-[ ] Add rate limiting logic into the API service
-[ ] Add caching logic into the API service
-[ ] Add caching logic into the communication layer between services
-[ ] Add best practice container builds
-[ ] Add best practice GitHub action pipeline steps
-[ ] Add GitHub action remote runners (to save on costs)
-[ ] Add generic pubsub communication method between services
-[ ] Add generic message queue communiction method between services
+- [x] Add Cassandra database connect logic into the common package
+- [x] Add MSSQL database connect logic into the common package
+- [x] Add Redis Cluster database connect logic into the common package
+- [x] Add a generic HTTP/S communication layer between services in the common package
+- [ ] Add NodeJS best practice kill process handling
+- [ ] Add GraphQL to the API service
+- [ ] Generate swagger docs for the API service
+- [ ] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
+- [ ] Add Postgres database connect logic into the common package
+- [ ] Add MySql database connect logic into the common package
+- [ ] Add DynamoDB database connect logic into the common package
+- [ ] Add MongoDB database connect logic into the common package
+- [ ] Add Elasticsearch database connect logic into the common package
+- [ ] Add Neo4j database connect logic into the common package
+- [ ] Add GRPC as a communication layer between services
+- [ ] Add websockets (socket.io) as a communication layer between services
+- [ ] Add websockets (socket.io) into the API service
+- [ ] Add rate limiting logic into the API service
+- [ ] Add caching logic into the API service
+- [ ] Add caching logic into the communication layer between services
+- [ ] Add best practice container builds
+- [ ] Add best practice GitHub action pipeline steps
+- [ ] Add GitHub action remote runners (to save on costs)
+- [ ] Add generic pubsub communication method between services
+- [ ] Add generic message queue communiction method between services
 
 ## Code patterns
 Being a monorepo, each of the services are found within the `packages` directory.
