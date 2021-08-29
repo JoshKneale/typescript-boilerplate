@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "private": true,
+  "workspaces": [
+    "packages/**"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.1"
+  },
+  "scripts": {
+    "watch": "lerna run --parallel build:watch",
+    "build": "lerna run --parallel build",
+    "start:dev": "lerna run --parallel start:dev",
+    "postinstall": "lerna bootstrap"
+  }
+}

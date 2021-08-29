@@ -1,0 +1,41 @@
+name: example
+
+on:
+  push:
+    paths:
+      - '.docker/prod/example.Dockerfile'
+      - 'services/node/packages/example/**'
+      - 'services/node/packages/common/**'
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Build monorepo base image
+        run: docker build --tag mono-base:latest .
+      - name: Build image for Dev
+        run: docker build -f ./.docker/prod/example.Dockerfile -t example-image:latest .
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      - name: Push to ECR Dev
+        id: ecr-dev
+        uses: jwalton/gh-ecr-push@v1
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: example-image:latest
+      - name: Deploy the updated image to ECS (Develop)
+        run: aws ecs update-service --cluster example-cluster --service example-service --force-new-deploy

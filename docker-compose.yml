@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: .docker/dev/api.Dockerfile
+    depends_on: ['localstack', 'watcher', 'elasticsearch']
+    ports: ['8080:8080']
+    volumes:
+      - ./services/node/packages/common/dist:/app/packages/common/dist:ro
+      - ./services/node/packages/api/src:/app/packages/api/src:ro
+    env_file: .envs/api.env
+    networks: ['network1']
+
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+  #   environment:
+  #     - cluster.name=docker-cluster
+  #     - bootstrap.memory_lock=true
+  #     - discovery.type=single-node
+  #     - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+  #   volumes:
+  #     - search_stash:/usr/share/elasticsearch/data
+  #   ports: ['9200:9200']
+  #   networks: ['network1']
+
+  watcher:
+    build:
+      context: .
+      dockerfile: .docker/dev/common.Dockerfile
+    command: yarn run watch
+    depends_on: []
+    volumes:
+      - ./services/node/packages/common/src:/app/packages/common/src:rw
+      - ./services/node/packages/common/dist:/app/packages/common/dist:rw
+    networks: ['network1']
+
+  # localstack:
+  #   image: localstack/localstack:latest
+  #   ports: ['4563-4599:4563-4599', '8055:8080']
+  #   env_file: .envs/localstack.env
+  #   volumes:
+  #     - ./setup-localstack.sh:/docker-entrypoint-initaws.d/make-sqs-sns.sh
+  #   networks: ['network1']
+
+  # postgres:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: postgres
+  #   ports: ['1234:5432']
+  #   networks: ['network1']
+  #   volumes:
+  #     - postgres:/postgres/data
+
+networks:
+  network1:
+    external: true
+
+# volumes:
+#   postgres:
+#   search_stash:

@@ -1,0 +1,20 @@
+{
+  "name": "@example/api",
+  "version": "0.1.0",
+  "description": "Example descriptions",
+  "main": "src/index.ts",
+  "author": "",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc --build --force tsconfig.json",
+    "start-built": "node ./dist/index.js",
+    "start:dev": "tsc --build --force tsconfig.json && node -r dotenv/config ./dist/index.js"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@example/common": "^0.1.0"
+  },
+  "devDependencies": {}
+}

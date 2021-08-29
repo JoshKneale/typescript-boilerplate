@@ -1,0 +1,10 @@
+.idea/
+node_modules
+/**/node_modules
+/**/.env
+/**/dist
+/**/tsconfig.tsbuildinfo
+*.log
+.vscode/
+vendor/
+.DS_Store
