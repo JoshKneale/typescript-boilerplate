@@ -1,6 +1,6 @@
 /**
  * A controlled error will not be logged in a production environment, but will return a user friendly message to the client.
- * 
+ *
  * To be used for "expected errors", such as invalid passwords or not enough funds.
  */
 export class ControlledError extends Error {

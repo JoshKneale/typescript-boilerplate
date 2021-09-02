@@ -1,5 +1,5 @@
 import pino from 'pino';
-import { NODE_ENV } from './constants';
+import {NODE_ENV} from './constants';
 
 export const logger = pino({
   timestamp: true,
@@ -9,8 +9,11 @@ export const logger = pino({
     res: pino.stdSerializers.res,
     err: pino.stdSerializers.err,
   },
-  prettyPrint: NODE_ENV === 'local' ? {
-    translateTime: true,
-    levelFirst: true,
-  } : false
+  prettyPrint:
+    NODE_ENV === 'local'
+      ? {
+          translateTime: true,
+          levelFirst: true,
+        }
+      : false,
 });

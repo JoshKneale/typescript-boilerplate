@@ -1,4 +1,4 @@
-import { validate } from './validateEnv';
+import {validate} from './validateEnv';
 
 /**
  * Environment the process is running on

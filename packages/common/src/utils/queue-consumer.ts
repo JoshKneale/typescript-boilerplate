@@ -1,6 +1,6 @@
-import { AWSError, SQS } from 'aws-sdk';
-import { PromiseResult } from 'aws-sdk/lib/request';
-import { logger } from './logger';
+import {AWSError, SQS} from 'aws-sdk';
+import {PromiseResult} from 'aws-sdk/lib/request';
+import {logger} from './logger';
 
 class SQSError extends Error {
   public code?: string;
@@ -17,7 +17,7 @@ class SQSError extends Error {
 }
 
 class TimeoutError extends Error {
-  constructor(message: string = 'Operation timed out.') {
+  constructor(message = 'Operation timed out.') {
     super(message);
     this.message = message;
     this.name = 'TimeoutError';

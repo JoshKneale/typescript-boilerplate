@@ -1,6 +1,6 @@
 import IORedis from 'ioredis';
-import { logger } from '../utils/logger';
-import { validate } from '../utils/validateEnv';
+import {logger} from '../utils/logger';
+import {validate} from '../utils/validateEnv';
 
 export class RedisDB {
   private readonly REDIS_HOST: string;
@@ -11,7 +11,7 @@ export class RedisDB {
   constructor() {
     this.REDIS_HOST = validate('REDIS_HOST');
     this.REDIS_PASSWORD = process.env.REDIS_PASSWORD; // Optional
-    this.REDIS_PORT = parseInt(validate('REDIS_PORT'), 10)
+    this.REDIS_PORT = parseInt(validate('REDIS_PORT'), 10);
   }
 
   public async connect(): Promise<IORedis.Redis> {
@@ -19,20 +19,20 @@ export class RedisDB {
       password: this.REDIS_PASSWORD,
       host: this.REDIS_HOST,
       port: this.REDIS_PORT,
-    })
+    });
 
     // await this.client.connect()
 
-    logger.info('Redis connected')
+    logger.info('Redis connected');
 
     return this.client;
   }
 
   public async disconnect(): Promise<void> {
     if (this.client) {
-      this.client.disconnect()
+      this.client.disconnect();
     }
 
-    logger.info('Redis disconnected')
+    logger.info('Redis disconnected');
   }
 }
