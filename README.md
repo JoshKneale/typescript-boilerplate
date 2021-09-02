@@ -24,11 +24,12 @@ yarn workspace @example/example start:dev
 - [x] Add Redis Cluster database connect logic into the common package
 - [x] Add a generic HTTP/S communication layer between services in the common package
 - [x] Add NodeJS best practice process stop handling
+- [x] Add eslint & prettier
 - [ ] Add request ID logging
 - [ ] Add GraphQL to the API service
 - [ ] Generate swagger docs for the API service
 - [ ] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
-- [ ] Add Postgres database connect logic into the common package
+- [x] Add Postgres database connect logic into the common package
 - [ ] Add MySql database connect logic into the common package
 - [ ] Add DynamoDB database connect logic into the common package
 - [ ] Add MongoDB database connect logic into the common package

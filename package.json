@@ -10,12 +10,19 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "lerna": "^3.22.1",
+    "pre-push": "^0.1.1",
     "prettier": "^2.3.2"
   },
   "scripts": {
     "watch": "lerna run --parallel build:watch",
     "build": "lerna run --parallel build",
     "start:dev": "lerna run --parallel start:dev",
-    "postinstall": "lerna bootstrap"
-  }
+    "postinstall": "lerna bootstrap",
+    "lint": "eslint . && exit 0",
+    "test": "lerna run --parallel test"
+  },
+  "pre-push": [
+    "lint",
+    "test"
+  ]
 }
