@@ -1,4 +1,5 @@
 import sql from 'mssql';
+import {ENVIRONMENT} from '../types/environment';
 import {NODE_ENV} from '../utils/constants';
 import {logger} from '../utils/logger';
 import {validate} from '../utils/validateEnv';
@@ -34,7 +35,7 @@ export class MsSqlDB {
         max: parseInt(this.MSSQL_POOL_MAX, 10),
       },
       options: {
-        trustServerCertificate: NODE_ENV === 'local' ? true : false, // change to true for local dev / self-signed certs
+        trustServerCertificate: NODE_ENV === ENVIRONMENT.LOCAL ? true : false, // change to true for local dev / self-signed certs
       },
     });
 

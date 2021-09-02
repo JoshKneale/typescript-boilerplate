@@ -29,7 +29,7 @@ yarn workspace @example/example start:dev
 - [ ] Add request ID logging
 - [ ] Add GraphQL to the API service
 - [ ] Generate swagger docs for the API service
-- [ ] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
+- [x] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
 - [x] Add Postgres database connect logic into the common package
 - [ ] Add MySql database connect logic into the common package
 - [ ] Add DynamoDB database connect logic into the common package

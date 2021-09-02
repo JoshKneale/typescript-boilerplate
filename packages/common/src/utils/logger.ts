@@ -1,4 +1,5 @@
 import pino from 'pino';
+import {ENVIRONMENT} from '../types/environment';
 import {NODE_ENV} from './constants';
 
 export const logger = pino({
@@ -10,7 +11,7 @@ export const logger = pino({
     err: pino.stdSerializers.err,
   },
   prettyPrint:
-    NODE_ENV === 'local'
+    NODE_ENV === ENVIRONMENT.LOCAL
       ? {
           translateTime: true,
           levelFirst: true,
