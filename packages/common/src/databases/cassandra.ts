@@ -51,4 +51,11 @@ export class CassandraDB {
 
         return response.rows[0] as unknown as T;
     }
+
+    public async disconnect(): Promise<void> {
+        if (this.client) {
+            await this.client.shutdown()
+        }
+        logger.info('Cassandra disconnected')
+    }
 }

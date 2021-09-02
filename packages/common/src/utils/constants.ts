@@ -8,4 +8,4 @@ export const NODE_ENV = validate('NODE_ENV');
 /**
  * The port to start the service on
  */
-export const PORT = parseInt(process.env.PORT || '0', 10) || 8080;
+export const PORT = parseInt(validate('PORT'));

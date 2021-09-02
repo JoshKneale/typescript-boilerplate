@@ -1,9 +1,12 @@
 import { ExampleSetting } from '@example/common'
-import { cassandra } from '../utils/databases';
 
 export class Settings {
     public static async get(id: number): Promise<ExampleSetting> {
-        const row = await cassandra.runQuery<ExampleSetting>('SELECT * FROM mytable WHERE id = ?', [id])
+        const row = {
+            id: 1,
+            name: 'active',
+            state: true
+        }
 
         if (!row) {
             throw new Error(`Cannot find setting with ID: ${id}`)
@@ -13,7 +16,18 @@ export class Settings {
     }
 
     public static async list(_pointer?: number): Promise<ExampleSetting[]> {
-        const rows = await cassandra.runQuery<ExampleSetting[]>('SELECT * FROM mytable', [])
+        const rows = [
+            {
+                id: 1,
+                name: 'active',
+                state: true
+            },
+            {
+                id: 2,
+                name: 'active',
+                state: true
+            }
+        ]
 
         return rows || [];
     }

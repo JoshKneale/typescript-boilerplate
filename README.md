@@ -24,7 +24,8 @@ yarn workspace @example/example start:dev
 - [x] Add MSSQL database connect logic into the common package
 - [x] Add Redis Cluster database connect logic into the common package
 - [x] Add a generic HTTP/S communication layer between services in the common package
-- [ ] Add NodeJS best practice kill process handling
+- [x] Add NodeJS best practice kill process handling
+- [ ] Add request ID logging
 - [ ] Add GraphQL to the API service
 - [ ] Generate swagger docs for the API service
 - [ ] Add definitive NODE_ENV values that are validated on service start (dev,test,prod)
@@ -45,6 +46,7 @@ yarn workspace @example/example start:dev
 - [ ] Add GitHub action remote runners (to save on costs)
 - [ ] Add generic pubsub communication method between services
 - [ ] Add generic message queue communiction method between services
+- [ ] Add unit / integration testing format in for services - add to build pipelines
 
 ## Code patterns
 Being a monorepo, each of the services are found within the `packages` directory.

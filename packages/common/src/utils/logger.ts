@@ -11,6 +11,6 @@ export const logger = pino({
   },
   prettyPrint: NODE_ENV === 'local' ? {
     translateTime: true,
-    levelFirst: true
+    levelFirst: true,
   } : false
 });
