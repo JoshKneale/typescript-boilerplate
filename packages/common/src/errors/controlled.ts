@@ -19,5 +19,5 @@ export class ControlledError extends Error {
 export interface ControlledResponse {
   type: 'Error' | 'ValidationError' | 'ControlledError';
   message: string;
-  data: any;
+  data: unknown & {error: {type: string; message: string}};
 }

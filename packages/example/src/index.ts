@@ -18,7 +18,7 @@ const start = async () => {
 
   files.forEach(file => {
     logger.info(`Loading route from ${file}`);
-    require(file.replace(/\.[^/.]+$/, '')).default(app);
+    require(file.replace(/\.[^/.]+$/, '')).default(app); // eslint-disable-line @typescript-eslint/no-var-requires
   });
 
   server = app.listen(PORT, () => {
@@ -28,7 +28,7 @@ const start = async () => {
 
 start();
 
-const stop = async (signal: any) => {
+const stop = async (signal: string) => {
   logger.info(`Received signal to terminate: ${signal}`);
 
   // Close database connections

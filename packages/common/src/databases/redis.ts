@@ -21,9 +21,10 @@ export class RedisDB {
       port: this.REDIS_PORT,
     });
 
-    // await this.client.connect()
-
+    await this.client.ping();
     logger.info('Redis connected');
+
+    // TODO: add event listeners https://github.com/luin/ioredis#events
 
     return this.client;
   }

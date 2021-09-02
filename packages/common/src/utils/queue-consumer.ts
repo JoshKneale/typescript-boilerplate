@@ -28,17 +28,17 @@ type ReceiveMessageResponse = PromiseResult<SQS.Types.ReceiveMessageResult, AWSE
 type SQSMessage = SQS.Types.Message;
 type ReceiveMessageRequest = SQS.Types.ReceiveMessageRequest;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isMethod(propertyName: string, value: any): boolean {
   return propertyName !== 'constructor' && typeof value === 'function';
 }
 
-function autoBind(obj: object): void {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function autoBind(obj: Record<string, any>): void {
   const propertyNames = Object.getOwnPropertyNames(obj.constructor.prototype);
   propertyNames.forEach(propertyName => {
-    // @ts-ignore
     const value = obj[propertyName];
     if (isMethod(propertyName, value)) {
-      // @ts-ignore
       obj[propertyName] = value.bind(obj);
     }
   });
@@ -147,12 +147,16 @@ export class Consumer {
   }
 
   private async deleteMessage(message: SQSMessage): Promise<void> {
-    const deleteParams = {
-      QueueUrl: this.queueUrl,
-      ReceiptHandle: message.ReceiptHandle!, // NOTE: why is this marked as possibly undefined?
-    };
-
     try {
+      if (!message.ReceiptHandle) {
+        throw new Error(`message.ReceiptHandle missing. message: ${JSON.stringify(message)}`);
+      }
+
+      const deleteParams = {
+        QueueUrl: this.queueUrl,
+        ReceiptHandle: message.ReceiptHandle,
+      };
+
       await this.sqs.deleteMessage(deleteParams).promise();
     } catch (err) {
       throw toSQSError(err, `SQS delete message failed: ${err.message}`);

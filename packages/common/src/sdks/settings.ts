@@ -38,7 +38,11 @@ export class SettingsSDK {
     return this.request<ExampleSetting>(`/examplesettings`, 'POST', body);
   }
 
-  private async request<T>(path: string, method: 'GET' | 'POST' | 'PATCH' | 'DELETE', body?: any): Promise<T> {
+  private async request<T>(
+    path: string,
+    method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
+    body?: Record<string, unknown>,
+  ): Promise<T> {
     try {
       const {data} = await this.client.request({
         url: path,

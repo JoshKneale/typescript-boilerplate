@@ -25,6 +25,7 @@ yarn workspace @example/example start:dev
 - [x] Add a generic HTTP/S communication layer between services in the common package
 - [x] Add NodeJS best practice process stop handling
 - [x] Add eslint & prettier
+- [x] Add pre-push hooks in for linting & testing
 - [ ] Add request ID logging
 - [ ] Add GraphQL to the API service
 - [ ] Generate swagger docs for the API service
@@ -44,7 +45,7 @@ yarn workspace @example/example start:dev
 - [ ] Add best practice GitHub action pipeline steps
 - [ ] Add GitHub action remote runners (to save on costs)
 - [ ] Add generic pubsub communication method between services
-- [ ] Add generic message queue communiction method between services
+- [ ] Add generic message queue communication method between services
 - [ ] Add caching logic into the communication layer between services
 - [ ] Add unit / integration testing format in for services - add to build pipelines
 - [ ] Add Kibana logging transport example
